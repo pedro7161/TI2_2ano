@@ -1,6 +1,13 @@
 $(function () {
     $("#menu").load("menu.html");
-  $("#bt").click(selos($("$bt")));    
+  
+  $("#bt").click(function(evt){
+      evt=evt?evt:window.event;
+      evt.preventeDefault();
+      alert(evt.target.id);
+    
+      selos($("$bt").val());
+  });    
 });
 // console.log(soma(4, 5));
 // function soma() {
