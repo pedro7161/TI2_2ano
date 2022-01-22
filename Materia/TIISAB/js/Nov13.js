@@ -5,10 +5,22 @@ $(function () {
       evt=evt?evt:window.event;
       evt.preventeDefault();
       alert(evt.target.id);
-    
-      selos($("$bt").val());
+     let euros=parseInt($("txteuros").val);
+      if(!isNaN(euros)){(
+        demoraselos(euros).then((euros)=>selos(euros)).catch(euros)=>{$("#txtmsg").val("nega ou zero"+ euros.toString)});
+      });
+    }else{$("#txtmsg").val("erro")}
+      
+
   });    
 });
+
+function demoraselos(euros){
+    return new Promise((resolve,reject)=>{setTimeout(() => {
+        if(euros>0)resolve(euros);
+        else reject(euros)
+    }, 1000);});
+}
 // console.log(soma(4, 5));
 // function soma() {
 //     let soma = 0;
@@ -96,7 +108,7 @@ switch(r){
         if (euros==3){s3=1;s5=0}
         else if(euros == 5){s3=0;s5=1}
         else if(euros == 6){s3=2;s5=0}
-        else{s3=0;s5=0;$("#txtmsg"),val("quantia invalida");}
+        else{s3=0;s5=0;$("#txtmsg").val("quantia invalida");}
 
     }
     $("#txts3").val(s3);
